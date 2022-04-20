@@ -8,9 +8,8 @@ COPY . .
 
 # Run as non-root
 RUN addgroup -g 1001 -S appuser && adduser -u 1001 -S appuser -G appuser
-RUN mkdir /opt && chown -R 1001:1001 /opt
-RUN mkdir /logs && chown -R 1001:1001 /logs
-RUN mkdir /logs && chown -R 1001:1001 /usr/src/app
+# RUN mkdir /logs && chown -R 1001:1001 /logs
+RUN chown -R 1001:1001 /usr/src/app
 USER 1001
 
 RUN ./mvnw package
