@@ -6,7 +6,12 @@ WORKDIR /usr/src/app
 
 COPY . .
 
-USER 1000
+RUN addgroup   --system --gid 1001 appuser
+RUN adduser  --system --uid  1001   --group appuser
+RUN  chown -R appuser:appuser /opt
+RUN mkdir /logs && chown -R appuser:appuser /logs
+
+USER 1001
 
 RUN ./mvnw package
 
