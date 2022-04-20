@@ -6,6 +6,8 @@ WORKDIR /usr/src/app
 
 COPY . .
 
+USER 1000
+
 RUN ./mvnw package
 
 ENTRYPOINT ["java","-jar","/usr/src/app/target/demo-0.0.1-SNAPSHOT.jar"]
